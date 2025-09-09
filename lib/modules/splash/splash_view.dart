@@ -1,11 +1,7 @@
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/constants/app_assets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../core/routes/app_routes.dart';
 import '../../core/routes/page_routes.dart';
 
 class SplashView extends StatefulWidget {
