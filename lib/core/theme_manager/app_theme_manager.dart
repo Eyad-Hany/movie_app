@@ -17,29 +17,23 @@ abstract class AppThemeManager{
           )
       ),
       textTheme: TextTheme(
-          headlineSmall: TextStyle(
-            fontFamily: "Inter",
-            fontWeight: FontWeight.w500,
-            fontSize: 24,
-            color: ColorPallete.generalTextColor,
-          ),
           titleLarge: TextStyle(
             fontFamily: "Inter",
             fontWeight: FontWeight.w500,
-            fontSize: 20,
-            color: ColorPallete.generalTextColor,
+            fontSize: 36,
+            color: ColorPallete.red,
           ),
           titleMedium: TextStyle(
             fontFamily: "Inter",
-            fontWeight: FontWeight.w500,
-            fontSize: 18,
+            fontWeight: FontWeight.w400,
+            fontSize: 20,
             color: ColorPallete.generalTextColor,
           ),
           titleSmall: TextStyle(
             fontFamily: "Inter",
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
-            color: ColorPallete.generalTextColor,
+            fontWeight: FontWeight.w400,
+            fontSize: 20,
+            color: ColorPallete.white,
           ),
           bodyMedium: TextStyle(
             fontFamily: "Inter",

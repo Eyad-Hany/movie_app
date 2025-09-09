@@ -62,6 +62,15 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/splash_image/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter_18pt-Bold.ttfInter_18pt-Bold.ttf
+        - asset: assets/fonts/Inter_18pt-Medium.ttf
+        - asset: assets/fonts/Inter_18pt-Regular.ttf
+        - asset: assets/fonts/Inter_18pt-SemiBold.ttf
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
