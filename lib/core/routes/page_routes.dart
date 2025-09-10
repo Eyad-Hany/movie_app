@@ -5,4 +5,5 @@ abstract class PageRouteName{
   static const String login = '/login';
   static const String register = '/register';
   static const String forget_password = '/forget_password';
+  static const String update_profile = '/update_profile';
 }

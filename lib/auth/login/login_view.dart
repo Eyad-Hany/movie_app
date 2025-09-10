@@ -30,26 +30,39 @@ class _LoginViewState extends State<LoginView> {
             children: [
               Image.asset(AppAssets.appLogo,height: 185,),
 
-              SizedBox(height: 100,),
+              SizedBox(height: 50,),
               CustomTextFormField(
+                controller: emailController,
                 hintText: 'Email',
                 prefixIcon: Icon(Icons.email,size: 30,),
                 validator: (value){
-                  if(value == null || value.isEmpty){
-                   return 'Please enter your email';
+                  final RegExp emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
                   }
+                  if(!emailRegex.hasMatch(value)){
+                    return 'Please enter a valid email';
+                  }
+
                   return null;
                 },
               ),
 
               SizedBox(height: 30,),
               CustomTextFormField(
+                controller: passwordController,
                 hintText: 'Password',
                 prefixIcon: Icon(Icons.lock,size: 30,),
                 isPassword: true,
                 validator: (value){
+                  final RegExp passwordRegex = RegExp(
+                      r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&^#()_+=\-[\]{};:"\\|,.<>\/?]).{8,20}$'
+                  );
                   if(value == null || value.isEmpty){
-                    return 'Please enter your email';
+                    return 'Please enter your password';
+                  }
+                  if(!passwordRegex.hasMatch(value)){
+                    return 'Please enter a valid password';
                   }
                   return null;
                 },
@@ -167,22 +180,51 @@ class _LoginViewState extends State<LoginView> {
 
               SizedBox(height: 30,),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 330.0),
-                child: CustomButton(
-                  backgroundColor: Colors.transparent,
-                    onTap: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(child: Image.asset(AppAssets.en)),
-                        const SizedBox(width: 9),
-                        Expanded(child: Image.asset(AppAssets.eg)),
-                      ],
-                    )
-
-
+                padding: const EdgeInsets.symmetric(horizontal: 325.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.yellow, width: 2),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          onPressed: (){},
+                          icon:
+                          Image.asset(AppAssets.en)
+                      ),
+                      SizedBox(width: 10,),
+                      IconButton(
+                          onPressed: (){},
+                          icon:
+                          Image.asset(AppAssets.eg)
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              )
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 345.0),
+              //   child: SizedBox(
+              //     height: 50,
+              //     child: CustomButton(
+              //       backgroundColor: Colors.transparent,
+              //       borderColor: ColorPallete.yellow,
+              //       borderRadius: 70,
+              //       onTap: () {},
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.center,
+              //         children: [
+              //           Image.asset(AppAssets.en,height: 50,),
+              //           const SizedBox(width: 10),
+              //           Image.asset(AppAssets.eg,height: 50,),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
             ],
           ),
         ),

@@ -7,6 +7,7 @@ import 'package:flutter_project/modules/onboarding/onboarding_view.dart';
 import '../../auth/login/login_view.dart';
 import '../../modules/home/home_view.dart';
 import '../../modules/splash/splash_view.dart';
+import '../../modules/update_profile/update_profile_view.dart';
 
 abstract class AppRoutes{
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -39,6 +40,11 @@ abstract class AppRoutes{
       case PageRouteName.forget_password:
         return MaterialPageRoute(
             builder: (_) => const ForgetPasswordView(),
+            settings: settings
+        );
+      case PageRouteName.update_profile:
+        return MaterialPageRoute(
+            builder: (_) => const UpdateProfileView(),
             settings: settings
         );
       default:

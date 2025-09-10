@@ -15,5 +15,13 @@ abstract class AppAssets{
   static const String registerr = 'assets/images/registerr.png';
   static const String forget_Password = 'assets/images/Forgotpassword.png';
   static const String boy1 = 'assets/images/boy1.png';
+  static const String home = 'assets/icons/home.png';
+  static const String homefill = 'assets/icons/Homefill.png';
+  static const String search = 'assets/icons/search (2).png';
+  static const String searchfill = 'assets/icons/searchfill.png';
+  static const String browse = 'assets/icons/browse.png';
+  static const String browsefill = 'assets/icons/browsefill.png';
+  static const String profile = 'assets/icons/profile.png';
+  static const String profilefill = 'assets/icons/profilefill.png';
 
 }
