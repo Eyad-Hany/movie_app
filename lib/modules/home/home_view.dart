@@ -16,16 +16,17 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: Constants.screens[selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Container(
           decoration: BoxDecoration(
-            color: ColorPallete.scaffoldBackgroundColor,
+            color: Colors.transparent,
             borderRadius: BorderRadius.all(
               Radius.circular(20.0),
             ),
-            
+
           ),
           child: ClipRRect(
             borderRadius: const BorderRadius.all(

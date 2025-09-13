@@ -4,11 +4,43 @@ import 'package:flutter_project/core/constants/app_assets.dart';
 import '../../../../core/routes/page_routes.dart';
 import '../../../../core/theme_manager/collor_pallete.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../network/shared_prefs_helper.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
   @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  String name = "";
+  String phone = "";
+  String avatar = AppAssets.boy1;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileData();
+  }
+
+  Future<void> _loadProfileData() async {
+    final SharedPrefsHelper _prefsHelper = SharedPrefsHelper();
+    final savedName = await _prefsHelper.getName();
+    final savedPhone = await _prefsHelper.getPhone();
+    final savedAvatar = await _prefsHelper.getAvatar();
+
+    setState(() {
+      if (savedName != null) name = savedName;
+      if (savedPhone != null) phone = savedPhone;
+      if (savedAvatar != null && savedAvatar.trim().isNotEmpty) {
+        avatar = savedAvatar;
+      } else {
+        avatar = AppAssets.boy1;
+      }
+    });
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -28,7 +60,7 @@ class ProfileView extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Image.asset(AppAssets.boy1,height: 150,),
+                        Image.asset(avatar,height: 150,),
                         SizedBox(width: 100,),
                         Column(
                           children: [
@@ -49,7 +81,7 @@ class ProfileView extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                            "John Safwat",
+                            name,
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
@@ -105,7 +137,7 @@ class ProfileView extends StatelessWidget {
                                 ),
                               ],
                             ),
-      
+
                           ),
                         ),
                       ],
@@ -150,7 +182,7 @@ class ProfileView extends StatelessWidget {
                         ),
                       ],
                     )
-      
+
                   ],
                 ),
               ),

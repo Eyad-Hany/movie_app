@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_project/core/theme_manager/collor_pallete.dart';
+import 'package:flutter_project/network/api_requests.dart';
 import '../../core/routes/page_routes.dart';
 import '../../core/constants/app_assets.dart';
 import '../../core/widgets/custom_button.dart';
 import '../../core/widgets/custom_text_form_field.dart';
+import '../../network/shared_prefs_helper.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -88,9 +92,31 @@ class _LoginViewState extends State<LoginView> {
 
               SizedBox(height: 30,),
               CustomButton(
-                onTap: () {
+                onTap: ()async {
                   if(_formKey.currentState!.validate()){
-                    Navigator.pushNamed(context, PageRouteName.home);
+                    final loginData = {
+                      "email": emailController.text,
+                      "password": passwordController.text,
+                    };
+                    final response = await ApiRequests.login(loginData);
+                    
+                    if(response.statusCode == 200){
+                      final Map<String, dynamic> data = jsonDecode(response.body);
+                      print(data);
+
+                      final tokenFromServer = data['data'] as String;
+
+                      final SharedPrefsHelper _prefsHelper = SharedPrefsHelper();
+                      await _prefsHelper.saveToken(tokenFromServer);
+
+                      print("Login Success: ${data["data"]}");
+                      Navigator.pushNamed(context, PageRouteName.home);
+                    }else{
+                      print("Login Failed: ${response.body}");
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Login failed")),
+                      );
+                    };
                   }
                 },
                 child: Text(
@@ -204,27 +230,6 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
               )
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 345.0),
-              //   child: SizedBox(
-              //     height: 50,
-              //     child: CustomButton(
-              //       backgroundColor: Colors.transparent,
-              //       borderColor: ColorPallete.yellow,
-              //       borderRadius: 70,
-              //       onTap: () {},
-              //       child: Row(
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         children: [
-              //           Image.asset(AppAssets.en,height: 50,),
-              //           const SizedBox(width: 10),
-              //           Image.asset(AppAssets.eg,height: 50,),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
-
             ],
           ),
         ),

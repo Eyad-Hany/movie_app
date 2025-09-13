@@ -23,5 +23,18 @@ abstract class AppAssets{
   static const String browsefill = 'assets/icons/browsefill.png';
   static const String profile = 'assets/icons/profile.png';
   static const String profilefill = 'assets/icons/profilefill.png';
+  static const String homeBg = 'assets/images/homebg.jpg';
+  static const String availableNow = 'assets/images/availablenow.png';
+  static const String watchNow = 'assets/images/watchnow.png';
+  static const String watchNoww = 'assets/images/WatchNoww.png';
+  static const String availableNoww = 'assets/images/AvailableNoww.png';
+  static const String boy2 = 'assets/icons/boy2.png';
+  static const String boy3 = 'assets/icons/boy3.png';
+  static const String boy4 = 'assets/icons/boy4.png';
+  static const String boy5 = 'assets/icons/boy5.png';
+  static const String boy6 = 'assets/icons/boy6.png';
+  static const String boy7 = 'assets/icons/boy7.png';
+  static const String boy8 = 'assets/icons/boy8.png';
+  static const String boy9 = 'assets/icons/boy9.png';
 
 }
